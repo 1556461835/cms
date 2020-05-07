@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 17:24:26
- * @LastEditTime: 2020-03-26 18:54:37
+ * @LastEditTime: 2020-04-28 09:01:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\App.vue
@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
