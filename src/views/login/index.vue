@@ -7,7 +7,7 @@
  * @FilePath: \www_admin_master\src\views\login\index.vue
  -->
 <template>
-  <div>
+<div>
     <div class="login">
       <img :src="img" alt="背景图" class="logobg">
       <el-form :model="formLabelAlign" class="login-form">
@@ -15,12 +15,19 @@
           <img :src="logo" alt="logo" class="logo-img">
         </div>
         <div>
-          <el-form-item>
-            <el-input v-model="formLabelAlign.userName" />
-          </el-form-item>
-          <el-form-item>
-            <el-input v-model="formLabelAlign.passWord" />
-          </el-form-item>
+			<el-form-item>
+				<el-input v-model="formLabelAlign.userName" type="text" placeholder="请输入用户名"/>
+			</el-form-item>
+			<el-form-item>
+				<el-input v-model="formLabelAlign.passWord" type="password" placeholder="请输入密码"/>
+			</el-form-item>
+			<el-form-item>
+				<el-button @click.native="login" type="primary" style="width:260px">立即登录</el-button>  
+			</el-form-item>
+			<el-form-item>
+				<span style="color: #000099;" @click="login">员工账号登陆</span>
+				<span style="float: right;color: #A9A9AB">忘记密码？</span>
+			</el-form-item>
         </div>
       </el-form>
     </div>
@@ -45,7 +52,16 @@ export default {
   mounted () {
   },
   methods: {
-
+	login() {
+	          if (!this.formLabelAlign.userName) {
+	            this.$message.error('请输入用户名');
+	            return;
+	          }
+	          if (!this.formLabelAlign.passWord) {
+	            this.$message.error('请输入密码');
+	            return;
+	          }   
+	        }
   }
 }
 </script>
