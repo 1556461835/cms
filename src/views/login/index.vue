@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 17:41:03
- * @LastEditTime: 2020-05-08 11:31:44
+ * @LastEditTime: 2020-05-09 10:22:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\views\login\index.vue
@@ -20,6 +20,9 @@
           </el-form-item>
           <el-form-item>
             <el-input v-model="formLabelAlign.passWord" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">立即创建</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -45,7 +48,10 @@ export default {
   mounted () {
   },
   methods: {
-
+    onSubmit () {
+      this.$router.push('/home')
+      console.log(this.$router)
+    }
   }
 }
 </script>
