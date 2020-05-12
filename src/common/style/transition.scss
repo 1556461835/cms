@@ -1,0 +1,26 @@
+/*fade-transform*/
+.fade1-transform-leave-active,
+.fade1-transform-enter-active {
+  transition: all .3s;
+}
+.fade1-transform-enter {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+.fade1-transform-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .3s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
