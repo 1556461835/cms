@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 17:24:26
- * @LastEditTime: 2020-05-07 15:41:20
+ * @LastEditTime: 2020-05-09 13:19:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\App.vue
@@ -13,7 +13,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted () {
+    console.log('路由', this.$router)
+  }
+}
 </script>
 
 <style lang="scss">
