@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 17:41:03
- * @LastEditTime: 2020-05-09 20:45:54
+ * @LastEditTime: 2020-05-12 15:09:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\views\login\index.vue
@@ -36,7 +36,7 @@
 <script>
 import bgimg from '@/assets/image/login/login-bg.jpg'
 import logo from '@/assets/image/login/logo.png'
-import { GET_USER_INFO } from '@/api/user'
+import { GET_LOGIN_INFO } from '@/api/user'
 
 export default {
   data () {
@@ -62,14 +62,24 @@ export default {
     }
   },
   mounted () {
-    const data = this.$get(GET_USER_INFO, {})
+    const data = this.$get(GET_LOGIN_INFO, {})
     console.log('返回值', data)
   },
   methods: {
-    login () {
+    async login () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          alert('submit!')
+          this.$get(GET_LOGIN_INFO, {}).then(res => {
+            console.log('res', res)
+            if (res.code === 200) {
+              console.log('存储', this.$store)
+              this.$store.dispatch('user/setToken', res.token)
+              this.$store.dispatch('user/saveUserInfo', res.data).then(() => {
+                console.log('进入首页')
+                this.$router.push('/home')
+              })
+            }
+          })
         } else {
           console.log('error submit!!')
           return false
