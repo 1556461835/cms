@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 19:56:30
- * @LastEditTime: 2020-05-13 10:53:48
+ * @LastEditTime: 2020-05-20 18:24:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\index.vue
@@ -12,7 +12,7 @@
       <navbar />
     </div>
     <div style="display:flex">
-      <el-aside width="200px">Aside</el-aside>
+      <sidebar style="width: 200px" />
       <el-main>
         <router-view />
       </el-main>
@@ -21,11 +21,12 @@
 </template>
 
 <script>
-import { Navbar } from './components'
+import { Navbar, Sidebar } from './components'
 export default {
   name: 'Layout',
   components: {
-    Navbar
+    Navbar,
+    Sidebar
   }
 }
 </script>
