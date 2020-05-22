@@ -12,7 +12,9 @@
       <img :src="logo" alt="公司logo">
     </div>
     <div class="nav-bar">
-      <div>收缩侧边栏</div>
+      <div style="margin:20px;">
+		<i class="el-icon-s-grid"   style="background-color: #FF9900;"></i>
+      </div>
       <div class="functionComponents">
         <!-- 开启全屏 -->
         <el-tooltip content="开启全屏" effect="dark" placement="bottom" class="function-item">

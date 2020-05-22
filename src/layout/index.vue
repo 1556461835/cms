@@ -11,21 +11,23 @@
     <div>
       <navbar />
     </div>
-    <div style="display:flex">
-      <el-aside width="200px">Aside</el-aside>
-      <el-main>
-        <router-view />
-      </el-main>
+    <div style="display:flex">   
+		<newaside />
+		<el-main>
+			<router-view />
+		</el-main>
     </div>
   </div>
 </template>
 
 <script>
 import { Navbar } from './components'
+import { newaside } from './components'
 export default {
   name: 'Layout',
   components: {
-    Navbar
+    Navbar,
+	newaside
   }
 }
 </script>
