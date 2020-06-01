@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-25 17:24:26
- * @LastEditTime: 2020-05-21 13:41:08
+ * @LastEditTime: 2020-05-23 14:05:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\router\index.js
@@ -40,35 +40,15 @@ const routes = [
       }
     ]
   },
+  // 实现路由刷新效果
   {
-    path: '/dao',
-    name: 'daoh',
+    path: '/redirect',
     component: layout,
-    redirect: '/dao/index',
-    meta: { title: '导航', icon: '' },
+    hidden: true,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/dao/index'),
-        name: 'daoindex',
-        meta: { title: '导航', icon: 'el-icon-homepage' },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/ces',
-    name: 'dd',
-    component: layout,
-    redirect: '/ces/user',
-    meta: { title: '导航', icon: '' },
-    children: [
-      {
-        path: 'user',
-        component: () => import('@/views/ces/user'),
-        name: 'daoindex',
-        meta: { title: '练习', icon: 'el-icon-homepage' },
-        children: []
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
       }
     ]
   },

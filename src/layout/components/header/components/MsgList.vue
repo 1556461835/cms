@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-13 10:12:28
- * @LastEditTime: 2020-05-21 10:26:15
+ * @LastEditTime: 2020-05-22 17:32:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\components\msgList.vue
@@ -48,30 +48,36 @@
 
 <script>
 export default {
-  props: {
-    openMsgVisible: {
-      type: Boolean,
-      default: false
-    }
-  },
+  // props: {
+  //   openMsgVisible: {
+  //     type: Boolean,
+  //     default: false
+  //   }
+  // },
   data () {
     return {
     }
   },
-  watch: {
-    openMsgVisible: {
-      handler (val) {
-        if (!val) {
-          return
-        }
-      },
-      deep: true,
-      immediate: true
+  computed: {
+    openMsgVisible () {
+      return JSON.parse(this.$store.getters.openMsg)
     }
   },
+  // watch: {
+  //   openMsgVisible: {
+  //     handler (val) {
+  //       if (!val) {
+  //         return
+  //       }
+  //     },
+  //     deep: true,
+  //     immediate: true
+  //   }
+  // },
   methods: {
     openMsg () {
-      this.$emit('update:openMsgVisible', false)
+      // this.$emit('update:openMsgVisible', false)
+      this.$store.dispatch('base/setOpenMsg', false)
     }
   }
 }

@@ -11,7 +11,8 @@ export default {
     home: 'home',
     screen: 'screen',
     message: 'message',
-    lang: 'lang'
+    lang: 'lang',
+    refresh: 'refresh'
   },
   user: {
     userInfo: 'userInfo',

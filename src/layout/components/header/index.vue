@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 21:21:51
- * @LastEditTime: 2020-05-21 09:56:28
+ * @LastEditTime: 2020-05-23 14:04:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\index.vue
@@ -16,6 +16,10 @@
 		<i class="el-icon-s-grid"   style="background-color: #FF9900;"></i>
       </div>
       <div class="functionComponents">
+        <!-- 刷新-->
+        <el-tooltip :content="$t('navbar.refresh')" effect="dark" placement="bottom" class="function-item">
+          <i :class=" pulse ? 'el-icon-refresh icon-rotate' : 'el-icon-refresh' " @click="refreshSelectedTag" />
+        </el-tooltip>
         <!-- 开启全屏 -->
         <el-tooltip :content="$t('navbar.screen')" effect="dark" placement="bottom" class="function-item">
           <i class="el-icon-menu" />
@@ -50,7 +54,8 @@
       </div>
     </div>
     <!-- 消息提示组件 -->
-    <msg-list :open-msg-visible.sync="openMsgVisible" />
+    <!-- <msg-list :open-msg-visible.sync="openMsgVisible" /> -->
+    <msg-list />
     <!-- 用户信息组件 -->
     <el-dialog title="用户信息" :visible.sync="userVisable">
       <el-table>
@@ -80,10 +85,20 @@ export default {
       dropdownList: [
         { name: '个人信息', command: 'userInfo', icon: 'el-icon-plus' },
         { name: '退出登录', command: 'loginOut', icon: 'el-icon-circle-plus' }
-      ]
+      ],
+      pulse: false
     }
   },
   methods: {
+    // 刷新页面
+    refreshSelectedTag () {
+      this.pulse = true
+      this.$router.replace({ path: '/redirect' + this.$route.fullPath }).then(() => {
+        setTimeout(() => {
+          this.pulse = false
+        }, 1000)
+      })
+    },
     getUser (command) {
       switch (command) {
         case 'userInfo':
@@ -100,6 +115,7 @@ export default {
       switch (event) {
         case 'msg' :
           this.openMsgVisible = !this.openMsgVisible
+          this.$store.dispatch('base/setOpenMsg', this.openMsgVisible)
           break
       }
     }
@@ -141,6 +157,13 @@ export default {
       .function-item {
         margin-right: 10px;
       }
+      .icon-rotate {
+        -webkit-animation: circle 2s infinite linear;
+        -moz-animation: circle 2s infinite linear;
+        -ms-animation: circle 2s infinite linear;
+        -o-animation: circle 2s infinite linear;
+        animation: circle 2 infinite linear;
+      }
     }
     .profile {
       width: 40px;
@@ -158,5 +181,21 @@ export default {
 .el-dialog__header {
   display: flex;
   justify-content: space-between;
+}
+@-webkit-keyframes circle {
+  0% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 </style>
