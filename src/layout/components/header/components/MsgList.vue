@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-13 10:12:28
- * @LastEditTime: 2020-05-20 15:19:15
+ * @LastEditTime: 2020-05-21 10:26:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\components\msgList.vue
  -->
 <template>
-  <transition class="warn-transition">
+  <transition name="warn-transition">
     <div v-if="openMsgVisible" class="msg_main">
       <el-card shadow="always">
         <div slot="header" class="clearfix">
@@ -108,12 +108,19 @@ export default {
       }
     }
   }
-  // 报警盒子动画
-.warn-transition-enter-active, .warn-transition-leave-active {
+</style>
+<style lang="scss" scoped>
+  /* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.warn-transition-enter-active{
   transition: all .4s;
 }
-.warn-transition-enter, .warn-transition-leave-active {
+.warn-transition-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.warn-transition-enter, .warn-transition-leave-to {
   transform: translate3d(100%, 0, 0);
+  // transform: translateX(10px);
   // opacity: 0;
 }
 </style>

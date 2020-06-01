@@ -1,92 +1,92 @@
 /*
  * @Author: your name
  * @Date: 2020-03-25 17:24:26
- * @LastEditTime: 2020-05-12 15:08:17
+ * @LastEditTime: 2020-05-21 13:41:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\router\index.js
  */
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 // import { getTitle } from '@/common/utils'
 
-import Login from "@/views/login/index";
-import layout from "@/layout/index.vue";
+import Login from '@/views/login/index'
+import layout from '@/layout/index.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   // 登录页面
   {
-    path: "/login",
+    path: '/login',
     component: Login,
-    name: "登录",
+    name: '登录',
     hidden: true,
-    meta: { title: "登录", icon: "" }
+    meta: { title: '登录', icon: '' }
   },
   {
-    path: "/home",
-    name: "Home",
+    path: '/home',
+    name: 'Home',
     component: layout,
-    redirect: "/",
-    meta: { title: "首页", icon: "" },
+    redirect: '/',
+    meta: { title: '首页', icon: '' },
     children: [
       {
-        path: "/",
-        component: () => import("@/views/home/index"),
-        name: "home",
-        meta: { title: "首页", icon: "el-icon-homepage" },
+        path: '/',
+        component: () => import('@/views/home/index'),
+        name: 'home',
+        meta: { title: '首页', icon: 'el-icon-homepage' },
         children: []
       }
     ]
   },
   {
-    path: "/dao",
-    name: "daoh",
+    path: '/dao',
+    name: 'daoh',
     component: layout,
-    redirect: "/dao/index",
-    meta: { title: "导航", icon: "" },
+    redirect: '/dao/index',
+    meta: { title: '导航', icon: '' },
     children: [
       {
-        path: "index",
-        component: () => import("@/views/dao/index"),
-        name: "daoindex",
-        meta: { title: "导航", icon: "el-icon-homepage" },
+        path: 'index',
+        component: () => import('@/views/dao/index'),
+        name: 'daoindex',
+        meta: { title: '导航', icon: 'el-icon-homepage' },
         children: []
       }
     ]
   },
   {
-    path: "/ces",
-    name: "dd",
+    path: '/ces',
+    name: 'dd',
     component: layout,
-    redirect: "/ces/user",
-    meta: { title: "导航", icon: "" },
+    redirect: '/ces/user',
+    meta: { title: '导航', icon: '' },
     children: [
       {
-        path: "user",
-        component: () => import("@/views/ces/user"),
-        name: "daoindex",
-        meta: { title: "练习", icon: "el-icon-homepage" },
+        path: 'user',
+        component: () => import('@/views/ces/user'),
+        name: 'daoindex',
+        meta: { title: '练习', icon: 'el-icon-homepage' },
         children: []
       }
     ]
   },
   {
-    path: "/about",
-    name: "About",
-    meta: { title: "详情页", icon: "el-icon-homepage" },
+    path: '/about',
+    name: 'About',
+    meta: { title: '详情页', icon: 'el-icon-homepage' },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
-];
+]
 
 const router = new VueRouter({
   routes
-});
+})
 // router.beforeEach(async (to, from, next) => {
 //   document.title = getTitle(to.meta.title)
 //   if (to.path === '/login') {
@@ -99,4 +99,4 @@ const router = new VueRouter({
 //     // })
 //   }
 // })
-export default router;
+export default router

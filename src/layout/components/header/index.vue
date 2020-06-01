@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 21:21:51
- * @LastEditTime: 2020-05-20 16:56:44
+ * @LastEditTime: 2020-05-21 09:56:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\index.vue
@@ -17,16 +17,16 @@
       </div>
       <div class="functionComponents">
         <!-- 开启全屏 -->
-        <el-tooltip content="开启全屏" effect="dark" placement="bottom" class="function-item">
+        <el-tooltip :content="$t('navbar.screen')" effect="dark" placement="bottom" class="function-item">
           <i class="el-icon-menu" />
         </el-tooltip>
         <!-- 消息 -->
-        <el-tooltip content="消息提示" effect="dark" placement="bottom" class="function-item">
+        <el-tooltip :content="$t('navbar.message')" effect="dark" placement="bottom" class="function-item">
           <i class="el-icon-message-solid" @click="handleClick('msg')" />
         </el-tooltip>
         <!-- 切换皮肤 -->
         <!-- 设置语言 -->
-        <el-tooltip content="切换语言" effect="dark" placement="bottom" class="function-item">
+        <el-tooltip :content="$t('navbar.lang')" effect="dark" placement="bottom" class="function-item">
           <language-change />
         </el-tooltip>
         <!-- 用户信息 -->
@@ -43,7 +43,7 @@
               :key="index"
               :command="item.command"
             >
-              {{ item.name }}
+              {{ $t(`user.${item.command}`) }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -78,7 +78,7 @@ export default {
       openMsgVisible: false,
       userVisable: false,
       dropdownList: [
-        { name: '用户信息', command: 'userInfo', icon: 'el-icon-plus' },
+        { name: '个人信息', command: 'userInfo', icon: 'el-icon-plus' },
         { name: '退出登录', command: 'loginOut', icon: 'el-icon-circle-plus' }
       ]
     }
