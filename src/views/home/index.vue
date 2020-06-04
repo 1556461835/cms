@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 11:56:54
- * @LastEditTime: 2020-05-23 13:46:13
+ * @LastEditTime: 2020-06-02 18:14:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\views\dashboard\index.vue
  -->
 <template>
-  <div>首页</div>
+  <div>首1页</div>
 </template>
 
 <script>

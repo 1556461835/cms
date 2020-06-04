@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 19:56:30
- * @LastEditTime: 2020-05-20 18:24:45
+ * @LastEditTime: 2020-06-03 17:18:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\index.vue
@@ -11,8 +11,8 @@
     <div>
       <navbar />
     </div>
-    <div style="display:flex">
-      <sidebar style="width: 200px" />
+    <div class="u-main">
+      <sidebar class="aslide-sidebar" />
       <el-main>
         <router-view />
       </el-main>
@@ -31,7 +31,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '@/common/style/basestyle.scss';
 
+.u-main {
+  display: flex;
+  .aslide-sidebar {
+    background: #f2f2f2;
+    height: $layout-sider-height;
+  }
+}
+</style>
+
+<style>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+}
 </style>
 

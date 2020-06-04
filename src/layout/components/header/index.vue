@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 21:21:51
- * @LastEditTime: 2020-05-23 14:04:23
+ * @LastEditTime: 2020-06-02 18:11:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\index.vue
@@ -13,7 +13,13 @@
     </div>
     <div class="nav-bar">
       <div style="margin:20px;">
-		<i class="el-icon-s-grid"   style="background-color: #FF9900;"></i>
+        <!-- 收缩侧边栏 -->
+        <i
+          :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+          :title="collapse ? '展开' : '收起'"
+          class="fold-unfold"
+          @click="handleCollapse"
+        />
       </div>
       <div class="functionComponents">
         <!-- 刷新-->
@@ -70,7 +76,7 @@
 <script>
 import MsgList from './components/MsgList'
 import LanguageChange from './components/LanguageChange'
-
+import { mapGetters } from 'vuex'
 export default {
   components: {
     MsgList,
@@ -88,6 +94,11 @@ export default {
       ],
       pulse: false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'collapse'
+    ])
   },
   methods: {
     // 刷新页面
@@ -118,6 +129,10 @@ export default {
           this.$store.dispatch('base/setOpenMsg', this.openMsgVisible)
           break
       }
+    },
+    // 改变侧边栏
+    handleCollapse () {
+      this.$store.dispatch('base/changeCollapse')
     }
   }
 }
