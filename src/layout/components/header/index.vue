@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 21:21:51
- * @LastEditTime: 2020-06-02 18:11:52
+ * @LastEditTime: 2020-06-04 14:39:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\header\index.vue
@@ -12,7 +12,7 @@
       <img :src="logo" alt="公司logo">
     </div>
     <div class="nav-bar">
-      <div style="margin:20px;">
+      <div class="function-item">
         <!-- 收缩侧边栏 -->
         <i
           :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
@@ -147,7 +147,6 @@ export default {
   background: $layout-background-color;
   font-size: 18px;
   display: flex;
-  padding: 0 10px;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
@@ -165,13 +164,15 @@ export default {
     align-items: center;
     width: calc(100% - 200px);
     padding-left: 10px;
+    .function-item {
+        margin-right: 10px;
+        color: $layout-font-color;
+      }
     .functionComponents {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .function-item {
-        margin-right: 10px;
-      }
+
       .icon-rotate {
         -webkit-animation: circle 2s infinite linear;
         -moz-animation: circle 2s infinite linear;

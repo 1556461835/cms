@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-12 16:08:01
- * @LastEditTime: 2020-06-02 18:12:23
+ * @LastEditTime: 2020-06-04 16:02:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\aside\index.vue
@@ -31,11 +31,9 @@
         <i class="el-icon-upload" />
         <span>资料上传</span>
       </template>
-      <el-menu-item-group>
-        <el-menu-item index="">企业简介</el-menu-item>
-        <el-menu-item index="">资讯动态</el-menu-item>
-        <el-menu-item index="">产品管理</el-menu-item>
-      </el-menu-item-group>
+      <el-menu-item index="">企业简介</el-menu-item>
+      <el-menu-item index="">资讯动态</el-menu-item>
+      <el-menu-item index="">产品管理</el-menu-item>
     </el-submenu>
     <el-menu-item index="">
       <i class="el-icon-document" />
@@ -57,6 +55,9 @@ export default {
   },
   computed: {
     ...mapGetters(['collapse'])
+  },
+  mounted () {
+    console.log('路由', this.$router.option)
   },
   methods: {
     handleOpen (key, keyPath) {

@@ -1,15 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2020-03-25 18:47:24
- * @LastEditTime: 2020-05-12 15:11:48
+ * @LastEditTime: 2020-06-07 21:41:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \iem-web-projectd:\个人工具网站\www_admin_master\vue.config.js
+ * @FilePath: \个人工具网站\www_admin_master\vue.config.js
  */
 const path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
+console.log('实例', process.env)
 function getProxy (path, type) {
   if (path === '/api') {
     switch (type) {

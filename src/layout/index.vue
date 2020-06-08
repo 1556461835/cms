@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-08 19:56:30
- * @LastEditTime: 2020-06-03 17:18:23
+ * @LastEditTime: 2020-06-04 15:43:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\index.vue
@@ -39,6 +39,21 @@ export default {
   .aslide-sidebar {
     background: #f2f2f2;
     height: $layout-sider-height;
+  }
+
+  .el-menu--collapse {
+    border-right: 0 !important;
+
+    .el-submenu__icon-arrow {
+      right: 10px;
+      margin-top: -3px;
+    }
+
+    .el-submenu__title {
+      span {
+        display: none;
+      }
+    }
   }
 }
 </style>

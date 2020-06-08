@@ -14,9 +14,6 @@
 
 <script>
 export default {
-  mounted () {
-    console.log('路由', this.$router)
-  }
 }
 </script>
 
