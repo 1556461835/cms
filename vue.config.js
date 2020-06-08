@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-25 18:47:24
- * @LastEditTime: 2020-06-07 21:41:43
+ * @LastEditTime: 2020-06-08 15:04:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \个人工具网站\www_admin_master\vue.config.js
@@ -27,6 +27,7 @@ module.exports = {
   outputDir: 'admin',
   assetsDir: 'static',
   productionSourceMap: false,
+  lintOnSave: process.env.NODE_ENV !== 'production',
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))

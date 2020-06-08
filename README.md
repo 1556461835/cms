@@ -25,5 +25,10 @@ npm run test
 npm run lint
 ```
 
+### 自动拉取提交仓库代码
+```
+npm run push
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
