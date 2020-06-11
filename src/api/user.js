@@ -7,7 +7,7 @@
  * @FilePath: \www_admin_master\src\api\user.js
  */
 // 登录
-export const GET_LOGIN_INFO = '/api/logininfo'
+export const GET_LOGIN_INFO = '/api/user/login'
 
 // 个人信息
 export const GET_USER_INFO = '/userinfo'

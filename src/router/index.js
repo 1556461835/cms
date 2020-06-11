@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-25 17:24:26
- * @LastEditTime: 2020-05-23 14:05:15
+ * @LastEditTime: 2020-06-09 20:25:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\router\index.js
@@ -21,7 +21,7 @@ const routes = [
     path: '/login',
     component: Login,
     name: '登录',
-    hidden: true,
+    hidden: false,
     meta: { title: '登录', icon: '' }
   },
   {
@@ -29,6 +29,7 @@ const routes = [
     name: 'Home',
     component: layout,
     redirect: '/',
+    hidden: false,
     meta: { title: '首页', icon: '' },
     children: [
       {
@@ -44,7 +45,7 @@ const routes = [
   {
     path: '/redirect',
     component: layout,
-    hidden: true,
+    hidden: false,
     children: [
       {
         path: '/redirect/:path(.*)',
@@ -53,14 +54,26 @@ const routes = [
     ]
   },
   {
-    path: '/about',
-    name: 'About',
-    meta: { title: '详情页', icon: 'el-icon-homepage' },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/system',
+    name: 'System',
+    component: layout,
+    redirect: '/system/role',
+    hidden: true,
+    meta: { title: '系统配置', icon: 'el-icon-setting' },
+    children: [
+      {
+        path: '/system/role',
+        component: () => import('@/views/system/role'),
+        name: 'Role',
+        meta: { title: '角色管理', icon: 'el-icon-user' }
+      },
+      {
+        path: '/system/pageMsg',
+        component: () => import('@/views/system/pageMsg'),
+        name: 'PageMsg',
+        meta: { title: '页面管理', icon: 'el-icon-user' }
+      }
+    ]
   }
 ]
 

@@ -15,9 +15,9 @@ function getProxy (path, type) {
   if (path === '/api') {
     switch (type) {
       case 'localhost':
-        return 'http://localhost:8080/'
-      case 'service':
-        return ''
+        return 'http://localhost:3001/api'
+      case 'build':
+        return 'http://localhost:3001/api'
     }
   }
 }
@@ -47,24 +47,25 @@ module.exports = {
       '/api': {
         target: getProxy('/api', process.env.VUE_APP_TYPE), // 代理到目标地址
         pathRewrite: { // 路径重写
-          '^/api': '/api'
+          '^/api': ''
         }
       }
-    },
-    before (app) {
-      app.get('/api/logininfo', function (req, res) {
-        res.json({
-          code: 200,
-          token: 'root',
-          data: {
-            username: 'admin',
-            password: '123456',
-            userImage: '',
-            IP: '111111111',
-            loginTime: '2020-05-11'
-          }
-        })
-      })
     }
   }
 }
+
+// before (app) {
+//   app.get('/api/logininfo', function (req, res) {
+//     res.json({
+//       code: 200,
+//       token: 'root',
+//       data: {
+//         username: 'admin',
+//         password: '123456',
+//         userImage: '',
+//         IP: '111111111',
+//         loginTime: '2020-05-11'
+//       }
+//     })
+//   })
+// }

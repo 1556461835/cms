@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-12 16:08:01
- * @LastEditTime: 2020-06-04 16:02:25
+ * @LastEditTime: 2020-06-09 20:35:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www_admin_master\src\layout\components\aside\index.vue
@@ -16,33 +16,15 @@
     @open="handleOpen"
     @close="handleClose"
   >
-    <el-submenu index="1">
+    <el-submenu v-for="item in pagerouter" :key="item.path" :index="item.path">
       <template slot="title">
-        <i class="el-icon-s-custom" />
-        <span>用户分析</span>
+        <i :class="item.meta.icon" />
+        <span>{{ item.meta.title }}</span>
       </template>
-      <el-menu-item-group>
-        <el-menu-item index="/dao">数据统计</el-menu-item>
-        <el-menu-item index="/ces">用户管理</el-menu-item>
+      <el-menu-item-group v-if="item.children">
+        <el-menu-item v-for="(page, i) in item.children" :key="i" :index="page.path">{{ page.meta.title }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
-    <el-submenu index="2">
-      <template slot="title">
-        <i class="el-icon-upload" />
-        <span>资料上传</span>
-      </template>
-      <el-menu-item index="">企业简介</el-menu-item>
-      <el-menu-item index="">资讯动态</el-menu-item>
-      <el-menu-item index="">产品管理</el-menu-item>
-    </el-submenu>
-    <el-menu-item index="">
-      <i class="el-icon-document" />
-      <span slot="title">购买单列表</span>
-    </el-menu-item>
-    <el-menu-item index="">
-      <i class="el-icon-star-on" />
-      <span slot="title">收藏列表</span>
-    </el-menu-item>
   </el-menu>
 </template>
 
@@ -51,13 +33,24 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Newaside',
   data () {
-    return {}
+    return {
+      pagerouter: []
+    }
   },
   computed: {
     ...mapGetters(['collapse'])
   },
   mounted () {
-    console.log('路由', this.$router.option)
+    console.log('路由', this.$router.options.routes)
+    const data = this.$router.options.routes
+    const routArray = []
+    for (const item of data) {
+      if (item.hidden) {
+        routArray.push(item)
+      }
+    }
+    this.pagerouter = routArray
+    console.log('值', this.pagerouter)
   },
   methods: {
     handleOpen (key, keyPath) {

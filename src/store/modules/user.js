@@ -29,7 +29,6 @@ const user = {
     setToken ({ commit }, data) {
       return new Promise((resolve, reject) => {
         commit('SET_TOKEN', data)
-        console.log('设置token', data)
         sessionStorage.setItem('token', data)
         resolve()
       })
@@ -38,7 +37,6 @@ const user = {
     saveUserInfo ({ commit }, data) {
       return new Promise((resolve, reject) => {
         commit('SET_USER_INFO', data)
-        console.log('userInfo', data)
         sessionStorage.setItem('user', JSON.stringify(data))
         resolve()
       })

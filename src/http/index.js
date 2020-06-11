@@ -11,8 +11,6 @@ import axios from 'axios'
 // import store from '@/store'
 
 // 创建axios实例
-console.log('node', process.env)
-console.log('创建实例', process.env.VUE_APP_BASE_API)
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000

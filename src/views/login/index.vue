@@ -61,31 +61,26 @@ export default {
       }
     }
   },
-  mounted () {
-    const data = this.$get(GET_LOGIN_INFO, {})
-    console.log('返回值', data)
-  },
+  mounted () {},
   methods: {
     async login () {
+      const data = {
+        username: this.person.formLabelAlign.userName,
+        password: this.person.formLabelAlign.passWord
+      }
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.$get(GET_LOGIN_INFO, {}).then(res => {
-            console.log('res', res)
-            if (res.code === 200) {
-              console.log('存储', this.$store)
-              this.$store.dispatch('user/setToken', res.token)
-              this.$store.dispatch('user/saveUserInfo', res.data).then(() => {
-                console.log('进入首页')
-                this.$router.push('/home')
-              })
-            }
+          this.$post(GET_LOGIN_INFO, data).then(res => {
+            this.$store.dispatch('user/setToken', res.token)
+            this.$store.dispatch('user/saveUserInfo', res.data).then(() => {
+              console.log('进入首页')
+              this.$router.push('/home')
+            })
           })
         } else {
-          console.log('error submit!!')
           return false
         }
       })
-      console.log(this.person.formLabelAlign)
     }
   }
 }
