@@ -10,14 +10,13 @@ const path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
-console.log('实例', process.env)
 function getProxy (path, type) {
   if (path === '/api') {
     switch (type) {
       case 'localhost':
         return 'http://localhost:3001/api'
       case 'build':
-        return 'http://localhost:3001/api'
+        return 'http://106.53.214.144:3001/api'
     }
   }
 }
